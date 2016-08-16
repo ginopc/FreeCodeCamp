@@ -1,0 +1,355 @@
+<html>
+	<head>
+		<title>My personal portfolio - Maurizio Aru</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta name="author" content="Maurizio Aru" />
+		<meta name="description" content="Personal portfolio page of Maurizio Aru" />
+
+		<!-- google fonts include -->
+		<link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet" type="text/css" />
+		<!-- bootstrap includes -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous" />
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous" />
+		<link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css" />
+		<!-- jQuery includes -->
+		<!-- script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script -->
+		<!-- fonts awesome -->
+		<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+		<style>
+			/*Container Styles ========== */
+
+			body {
+			  background-color: #383C3F;
+			}
+
+			nav {
+			  background-color: darkred;
+			  border: 1px solid #383C3F;
+			  padding-bottom: .5rem;
+			}
+
+			nav.navbar-default {
+			  border-color: #383C3F;
+			  background-color: lightgray;
+			  padding-bottom:0em;
+			}
+
+			#home {
+			  padding-top: 7em;
+			  padding-bottom: 7em;
+			  background-image: url('http://img.hrhwalls.com/images2/ki13j11c4ef.jpg');
+			  color: white;
+			}
+
+			#about {
+			  border: 10px 0 10px 0 solid #333333;
+			  padding: 4em 0 2em 0;
+			  // background-image: url("http://s27.postimg.org/aojyg3mjn/stardust_2_X.png");
+			  // background-color: #383C3F;
+			  background-color: #ac0000;
+			  color: white;
+			  font-size: 18px;
+			}
+
+			#portfolio {
+			  padding: 4em 0 7em 0;
+			  //background-image: url('http://s3.postimg.org/pgomjz0dv/footer_lodyas.png');
+			  background-color: green;
+			  z-index: 999;
+			  color: white;
+			}
+
+			#contact {
+				background-color: #ffff00;
+			  color: black;
+			  padding: 7em 0;
+			}
+
+			footer {
+			  background-color: #383C3F;
+			  color: white;
+			  padding: 2em 9em;
+			}
+			/*Styles for 'home' ========= */
+
+			#home ul {
+			  padding-top: 1em;
+			}
+
+			#home ul a {
+			  color: white;
+			}
+
+			#home ul li a:hover {
+			  display: inline-block;
+			  color: darkorange;
+			  position: relative;
+			  top: -5px;
+			}
+
+			#home ul li {
+			  display: inline-block;
+			  padding: 1em 1.5em;
+			}
+
+			#home ul li:first-child {
+			  display: inline-block;
+			  padding: 1em 1.5em 1em 0;
+			}
+
+			.jumbotron {
+			  margin-bottom: 0em;
+			}
+			/*Styles for 'about' ============ */
+
+			#about img {
+			  position: relative;
+			  bottom: -2em;
+			}
+			/*Styles for 'portfolio' ======== */
+
+			div.portfolio-entries {
+			  padding-top: 5em;
+			}
+
+			div.portfolio-entries a {
+			  color: white;
+				font-family: monospace;
+			}
+
+			div.portfolio-entries a:hover {
+			  position: relative;
+			  top: -1em;
+			  opacity: .60;
+			}
+
+			#portfolio div.caption {
+			  display: block;
+			  padding: 1.25em 0 .75em 0;
+			  background-color: #414141;
+			}
+			/*Styles for 'contact' =========== */
+
+			#contact ul a {
+			  color: white;
+			}
+
+			#contact ul li a:hover {
+			  display: inline-block;
+			  color: #2e9cd6;
+			  position: relative;
+			  top: -5px;
+			}
+
+			#contact ul li {
+			  display: inline-block;
+			  padding: 1em 1.5em;
+			}
+
+			#contact ul li:first-child {
+			  display: inline-block;
+			  padding: 1em 1.5em 1em 0;
+			}
+			/*Styles for Navbar ============= */
+
+			.navbar-brand img {
+			  display: inline-block;
+			  position: relative;
+			  top: -.65em;
+			}
+
+			.navbar-brand p {
+			  display: inline-block;
+			  position: relative;
+			  top: -.50em;
+			  padding-left: 1em;
+				
+				footer a {
+					color: white;
+				}
+				
+				footer a:hover {
+					color:white;
+					babkground-color: #383C3F;
+				}
+			}		
+		</style>
+	</head>
+	<body>
+		<nav class="navbar navbar-default navbar-fixed-top">
+		  <div class="container-fluid">
+			 <div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+				  <span class="icon-bar"></span>
+				  <span class="icon-bar"></span>
+				  <span class="icon-bar"></span> 
+				</button>
+				<a class="navbar-brand" href="#">.:: Maurizio Aru ::.</a>
+			 </div>
+			 <div class="collapse navbar-collapse" id="myNavbar">
+				<ul class="nav navbar-nav navbar-right">
+				  <li><a href="#home">Home</a></li>
+				  <li><a href="#about">About</a></li>
+				  <li><a href="#portfolio">Portfolio</a></li>
+				  <li><a href="#contact">Contact</a></li>
+				</ul>
+			 </div>
+		  </div>
+		</nav>
+		
+		<!-- ######### HOME SECTION ############ -->
+		<div id="home">
+		  <div class="home-wrap text-center">
+			 <h1 class="home-header">Maurizio Aru</h1>
+			 <h2>Personal portfolio page</h2>
+			 <hr class="home-line">
+			 <div class="social-buttons">
+				 <a href="https://www.linkedin.com/in/maurizioaru" class="btn btn-default" target="_blank"><i class="fa fa-linkedin"></i></a>
+				 <a href="https://github.com/ginopc" class="btn btn-default" target="_blank"><i class="fa fa-github"></i></a>
+			 </div>
+		  </div>
+		</div>
+
+		
+		<!-- ######### ABOUT SECTION ############ -->
+		<div id="about">
+		  <div class="container">
+			 <div class="about-wrap text-center">
+				<h1>ABOUT ME</h1>
+				<hr class="line">
+				<div class="about-text">
+					<p>My name is Maurizio and I am an developer. I work hard to improve myself and achieve my goals. Now I learn on <a href="http://www.freecodecamp.org">FreeCodeCamp</a> course.
+						My passions are my family, music and new technologies. I like doing sports and meet with my friends whenever I can.</p>
+				  <p>Below you can see some of my work.</p>
+				</div>
+				<div class="row">
+				  <div class="col-md-6">
+					 <h3>Front-End Skills:</h3>
+					 <ul class="skills-list">
+						<li>HTML</li>
+						<li>CSS</li>
+						<li>Javascript</li>
+						<li>Bootstrap</li>
+					 </ul>
+				  </div>
+				  <div class="col-md-6">
+					 <h3>Back-End Skills:</h3>
+					 <ul class="skills-list">
+						<li>NodeJs</li>
+						<li>Java</li>
+						<li>Perl</li>
+						<li>PHP</li>
+					 </ul>
+					 <!-- col -->
+				  </div>
+				  <!-- row -->
+				</div>
+				<!-- about-wrap div -->
+			 </div>
+			 <!-- container div -->
+		  </div>
+		  <!-- about div -->
+		</div>
+		
+		<!-- ######### PORTFOLIO SECTION ############ -->
+		<div id="portfolio">
+		  <div class="container">
+			 <h1 class="portfolio-header text-center">PORTFOLIO</h1>
+			 <hr class="line">
+			 <div class="placeholder-box">
+				<div class="row">
+				  <div class="col-md-4">
+					 <div class="placeholder-item">
+						<a href="http://www.ginopc.it" target="_blank"><img src="https://s9.postimg.org/cft17avxr/ginopc.jpg" alt="project"></a>
+						<p class="placeholder-desc"> GinoPc.it</p>
+					 </div>
+				  </div>
+				  <div class="col-md-4">
+					 <div class="placeholder-item">
+						<a href="http://www.studioaru.it" target="_blank"><img src="https://s9.postimg.org/y3hzhqwbz/studioaru.png" alt="project"></a>
+						<p class="placeholder-desc"> StudioAru.it</p>
+					 </div>
+				  </div>
+				  <div class="col-md-4">
+					 <div class="placeholder-item">
+						<a href="http://www.decorparty.it" target="_blank"><img src="https://s9.postimg.org/60pewvzu7/decorparty.png" alt="project"></a>
+						<p class="placeholder-desc"> DecorParty.it</p>
+					 </div>
+				  </div>
+				</div>
+				<div class="row">
+				  <div class="col-md-4">
+					 <div class="placeholder-item">
+						<a href="http://www.scsardegna.it" target="_blank"><img src="https://placehold.it/300x224" alt="project"></a>
+						<p class="placeholder-desc"> ScSardegna.it</p>
+					 </div>
+				  </div>
+				  <div class="col-md-4">
+					 <div class="placeholder-item">
+						<a href="http://www.desparsardegna.it" target="_blank"><img src="https://placehold.it/300x224" alt="project"></a>
+						<p class="placeholder-desc"> DesparSardegna.it</p>
+					 </div>
+				  </div>
+				  <div class="col-md-4">
+					 <div class="placeholder-item">
+						<a href="http://www.wikipedia.org" target="_blank"><img src="https://placehold.it/300x224" alt="project"></a>
+						<p class="placeholder-desc"> Wikipedia</p>
+					 </div>
+				  </div>
+				</div>
+			 </div>
+		  </div>
+		</div>
+		
+		<div class="divider"></div>
+
+		<!-- ######### CONTACT SECTION ############ -->
+		<div id="contact">
+		  <div class="container">
+			 <div class="contact-wrap text-center">
+				<h1 class="contact-header">CONTACT</h1>
+				<hr class="contact-line">
+				<form method="post" action="#">
+				  <div class="row">
+					 <div class="col-md-12">
+						<input type="text" id="name" name="name" required="required" placeholder="Put you name" />
+					 </div>
+				  </div>
+				  <div class="row">
+					 <div class="col-md-12">
+						<input type="email" id="email" name="email" placeholder="address@example.com" required="required" />
+					 </div>
+				  </div>
+				  <div class="row">
+					 <div class="col-md-12">
+						<textarea id="message" name="message" required="required" data-minlength="20"></textarea>
+					 </div>
+				  </div>
+				  <div class="row">
+					 <div class="col-md-12">
+						<input type="submit" value="Submit" class="btn btn-default" id="submit-button" />
+					 </div>
+				  </div>
+					<div class="row">
+						<div class="col_xs-12">
+							<p>You can also visit my personal social pages. Press buttons on top of the page</p>
+							<a href="#home"><i class="fa fa-arrow-up">Go Up</i></a>
+						</div>
+					</div>
+				</form>
+			 </div>
+		  </div>
+		</div>
+
+		<footer>
+		  <ul class="footer-menu">
+			 <li><a href="#home"><i class="fa">Home</i></a></li>
+			 <li><a href="#about"><i class="fa">About</i></a></li>
+			 <li><a href="#portfolio"><i class="fa">Portfolio</i></a></li>
+			 <li><a href="#contact"><i class="fa">Contact</i></a></li>
+		  </ul>
+		</footer>
+		
+		
+	</body>
+</html>
