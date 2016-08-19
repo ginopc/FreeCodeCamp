@@ -105,9 +105,8 @@
 		  console.log("getQuote called");
 		  $(".quote-text").html("This is my first quote");
 		  $(".quote-author").html("- Maurizio Aru");
-		  $.getJSON("https://github.com/ginopc/FreeCodeCamp/blob/master/quotes.json", function(data){
-			console.log("parsing data...")
-		  });
+		  //$.getJSON("https://github.com/ginopc/FreeCodeCamp/blob/master/quotes.json", function(data){
+		  $.getJSON("quotes.json", parseContent);
 		}
 
 		$(document).ready(function(){
