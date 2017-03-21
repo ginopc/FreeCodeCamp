@@ -1,43 +1,44 @@
+<!DOCTYPE html>
 <html lang="it">
 <head>
 	<title>Free Code Camp - A Random Quote Machine</title>
 	<meta name="author" content="Maurizio Aru">
 	<meta name="description" content="a simple random quote machine">
-	<meta charset="UTF-8>
+	<meta charset="UTF-8">
 		
 	<!-- styles -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
-	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster" />
 	<link rel="stylesheet" href="css/styles.css" />
 
 	<!-- scripts -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
 	<script src="js/scripts.js"></script>
 </head>
 <body>
-
-<div class="container">
-  <header>
-    <h1>My favourite quotes</h1>
-    <p>On this page you can reads my favourite quotes. Press a "New Quote" button to see another quote</p>
-  </header>
-  <div class="quote-box">
-    <div class="quote-text">This is the text quoted</div>
-    <div class="quote-author">- FirstName LastName</div>
-    <div class="buttons">
-      <a href="#" title="Post this quote on Twitter">
-        <i class="fa fa-twitter"></i>
-      </a>
-      <a href="#" title="Post this quote on Facebook">
-        <i class="fa fa-facebook"></i>
-      </a>
-      <a href="#" title="Get a next quote">
-        <i id="next-quote" class="fa fa-arrow-right"></i>
-      </a>
-    </div>
-  </div>
-  <footer>&copy; Powered by Maurizio Aru</footer>
-</div>
+	<div class="container">
+	  <header>
+		<h1>My favourite quotes</h1>
+		<p>On this page you can reads my favourite quotes. Press a "New Quote" button to see another quote</p>
+	  </header>
+	  <div class="quote-box">
+		<div id="quote-text" class="quote-text">This is the text quoted</div>
+		<div id="quote-author" class="quote-author">- FirstName LastName</div>
+		<div class="buttons">
+		  <a href="#" title="Post this quote on Twitter">
+		    <i id="btn-twitter" class="fa fa-twitter"></i>
+		  </a>
+		  <a href="#" title="Post this quote on Facebook">
+		    <i id="btn-facebook" class="fa fa-facebook"></i>
+		  </a>
+		  <a href="#" title="Next Quote">
+		    <i id="next-quote" class="fa fa-arrow-right"></i>
+		  </a>
+		</div>
+	  </div>
+	  <footer>Designed and developed by Maurizio Aru<br/>&copy; 2016 by the author.</footer>
+	</div>
 </body>
 </html>

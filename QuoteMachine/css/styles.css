@@ -5,7 +5,9 @@
 	Created : 2016.08.19 
 */
 
-@import 'https://fonts.googleapis.com/css?family=Architects+Daughter|Kalam';
+@import url('https://fonts.googleapis.com/css?family=Architects+Daughter|Kalam');
+@import url('https://fonts.googleapis.com/css?family=Amatic+SC');
+
 /* GENERAL STYLES */
 * {
   margin: 0;
@@ -14,44 +16,56 @@
   vertical-align: baseline;
 }
 body {
-  background-color: orange;
-  color: darkorange;
+  background-color: lightyellow;
+  color: white;
 }
 header {
-  color: maroon;
-  text-align: center;
+	text-align: center;
+	color: darkred;
+	font-family: 'Amatic SC', coursive;
 }
-header p {
-  color: maroon;
+header > h1 {
+	font-size: 3em;
+}
+header > p {
+	font-size: 1em;
 }
 div {
   position: relative;
   z-index: 2;
 }
 footer {
-  text-align: center;
-  color: white;
+	text-align: center;
+	background-color: darkred;
+	border-radius : 3px;
+	margin: 3em;
+	font-family: 'Amatic SC';
+	font-size: 1em;
 }
 
 /* quote elements styles */
 .quote-box {
-  background-color: white;
-  border-radius: 10px;
-  margin: 7% auto auto auto;
-  align: center;
-  padding: 2em;
-  width: 400px ;
+	background-color: white;
+	border: 1px solid darkred;
+	border-radius: 10px;
+	margin: 7% auto auto auto;
+	align: center;
+	padding: 2em;
+	width: 400px ;
 }
 .quote-text {
-  font-size: 2.5em;
-  font-family: "Architects Daughter";
-  i {
-	font-size: 1em;
-	margin-right: 0.4em;
-  }
+	font-size: 2.5em;
+	color: darkgray;
+	font-family: "Architects Daughter";
+}
+.quote-text i {
+    font-size: 1em;
+    margin-right: 0.4em;
 }
 .quote-author {
   text-align: right;
+  font-family: "Kalam";
+  color: darkgray;
   padding: 20px 0 5px 0;
   font-size: 1em;
 }
@@ -62,7 +76,7 @@ footer {
 .buttons i {
   width: 30px;
   height: 30px;
-  background-color: orange;
+  background-color: darkred;
   color: white;
   border-radius: 3px;
   padding: 7px;
@@ -71,7 +85,7 @@ footer {
   opacity: 0.8;
 }
 .buttons a {
-  color: white;
+  /* color: white; */
 }
 buttons a:hover {
   color: white;
@@ -79,4 +93,6 @@ buttons a:hover {
 #next-quote {
   width: auto;
 }
-
+#btn-facebook {
+	visible: false;
+}
