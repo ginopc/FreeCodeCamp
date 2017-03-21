@@ -5,117 +5,15 @@
 	<meta name="description" content="a simple random quote machine">
 	<meta charset="UTF-8>
 		
-	<!-- google fonts include -->
-	<link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet" type="text/css">
-	<!-- bootstrap includes -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-	<!-- jQuery includes -->
+	<!-- styles -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" />
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster" />
+	<link rel="stylesheet" href="css/styles.css" />
+
+	<!-- scripts -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-	<style>
-		@import 'https://fonts.googleapis.com/css?family=Architects+Daughter|Kalam';
-		/* GENERAL STYLES */
-		* {
-		  margin: 0;
-		  padding: 0;
-		  list-style: none;
-		  vertical-align: baseline;
-		}
-		body {
-		  background-color: orange;
-		  color: darkorange;
-		}
-		header {
-		  color: maroon;
-		  text-align: center;
-		}
-		header p {
-		  color: maroon;
-		}
-		div {
-		  position: relative;
-		  z-index: 2;
-		}
-		footer {
-		  text-align: center;
-		  color: white;
-		}
-
-		/* quote elements styles */
-		.quote-box {
-		  background-color: white;
-		  border-radius: 10px;
-		  margin: 7% auto auto auto;
-		  align: center;
-		  padding: 2em;
-		  width: 400px ;
-		}
-		.quote-text {
-		  font-size: 2.5em;
-		  font-family: "Architects Daughter";
-		  i {
-			font-size: 1em;
-			margin-right: 0.4em;
-		  }
-		}
-		.quote-author {
-		  text-align: right;
-		  padding: 20px 0 5px 0;
-		  font-size: 1em;
-		}
-		.buttons {
-		  display: block;
-		  /* border: 1px red solid; */
-		}
-		.buttons i {
-		  width: 30px;
-		  height: 30px;
-		  background-color: orange;
-		  color: white;
-		  border-radius: 3px;
-		  padding: 7px;
-		}
-		.buttons i:hover {
-		  opacity: 0.8;
-		}
-		.buttons a {
-		  color: white;
-		}
-		buttons a:hover {
-		  color: white;
-		}
-		#next-quote {
-		  width: auto;
-		}
-	</style>
-	<script>
-		function parseContent(data){
-		  console.log("parseContent called");
-		  var content = "This is the next quote",
-			  author = "Maurizio Aru",
-			  num = Math.floor(Math.random() * 20);
-		  content = data[num]["content"]
-		  author = data[num]["author"];
-		  console.log("Content: " + content + " | Author: " + author);
-		  $(".quote-text").html(content);
-		  $(".quote-author").html("- " + author);
-		}
-
-		function getQuote(){
-		  console.log("getQuote called");
-		  $(".quote-text").html("This is my first quote");
-		  $(".quote-author").html("- Maurizio Aru");
-		  //$.getJSON("https://github.com/ginopc/FreeCodeCamp/blob/master/quotes.json", function(data){
-		  $.getJSON("quotes.json", parseContent);
-		}
-
-		$(document).ready(function(){
-		  console.log("I'm ready!");
-		  getQuote();
-		  
-		  $("#next-quote").on("click", getQuote);
-		});
-	</script>
+	<script src="js/scripts.js"></script>
 </head>
 <body>
 
