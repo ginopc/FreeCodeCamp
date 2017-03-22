@@ -1,0 +1,51 @@
+/**
+	My Local Weather styles
+	
+	Author  : Maurizio Aru
+	Created : 22.03.2017
+*/
+
+
+@import 'https://fonts.googleapis.com/css?family=Poiret+One|Raleway';
+
+body {
+	margin: 0;
+	padding: 0;
+	color: #000071;
+	background-color: white;
+	background-image: url("../img/clouds.jpg");
+	background-repeat: repeat-x;
+}
+header {
+	/* background-color: #0086b3; */
+	/* border-radius: 1em; */
+	color: #000071;
+	font-family: 'Poiret One', cursive;
+	padding: 0.6em;
+	margin : 0;
+}
+footer {
+  /* background-color: #0086b3; */
+  /* border-radius: 1em; */
+	color: #000071;
+  font-family: 'Poiret One', cursive;
+	font-size: 12pt;
+}
+section {
+	color: #000071;
+	padding: 2em;
+	font-family: 'Raleway', sans-serif
+}
+footer a {
+  color: #000071;
+  
+}
+footer a:hover {
+	color: #000071;
+}
+.container {
+	/* background-color: #99e6ff; */
+	/* border-radius: 1em; */
+	margin: 0;
+	padding: 0;
+}

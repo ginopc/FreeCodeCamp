@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+	<title>My Local Weather</title>
+	<meta charset="utf-8">
+	<meta name="author" content="Maurizio Aru" />
+	<meta name="description" content="Local weather app, auto-localization and multi measure's system. Based on FreeCodeCamp challenge" />
+	
+	<!-- styles -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/1.3.2/css/weather-icons.min.css" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="css/styles.css" />
+	
+	<!-- scripts -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+	<script src="js/scripts.js"></script>
+</head>
+<body>
+	<div class="container" ng-app="weather">
+	  <header>
+		<div class="text-center">
+		  <h1>Weather App</h1>
+		</div>
+	  </header>
+	  <section class="section_main" ng-controller="WeatherController">
+		<div class="row">
+		  <div class="col-md-12">
+			<div class="text-center"><p>{{Data.city}}, {{Data.country}}</div>
+		  </div>
+		</div><!--./row -->
+		<div class="row">
+		  <div class="col-xs-6">
+			<div class="text-center" id="temperature">{{Data.temp}} &#176;<span ng-click="Data.sys()">{{Data.unit}}</span></div>
+		  </div>
+		  <div class="col-xs-6">
+			  <div class="text-center" id="weather-status">Status: {{Data.des}}</div> 
+		  </div>
+		</div><!--./row -->
+		<div class="row">
+		  <div class="col-md-12">
+			<div id="status_icon hide">
+			  <div class="text-center all-icon">
+				<div class="icon sun-shower hide">
+				  <div class="cloud"></div>
+				  <div class="sun">
+					<div class="rays"></div>
+				  </div>
+				  <div class="rain"></div>
+				</div>
+				<div class="icon thunder-storm hide thunderstom">
+				  <div class="cloud"></div>
+				  <div class="lightning">
+					<div class="bolt"></div>
+					<div class="bolt"></div>
+				  </div>
+				</div>
+				<div class="icon cloudy hide clouds">
+				  <div class="cloud"></div>
+				  <div class="cloud"></div>
+				</div>
+				<div class="icon flurries hide snow">
+				  <div class="cloud"></div>
+				  <div class="snow">
+					<div class="flake"></div>
+					<div class="flake"></div>
+				  </div>
+				</div>
+				<div class="icon sunny hide clear">
+				  <div class="sun">
+					<div class="rays"></div>
+				  </div>
+				</div>
+				<div class="icon rainy hide rain">
+				  <div class="cloud"></div>
+				  <div class="rain"></div>
+				</div>
+			  </div>
+			  
+			</div><!--.status_icon -->
+		  </div>
+		</div><!--./row -->
+	  </section>
+	  <footer>
+		<div class="text-center">
+		  Designed by <a href="http://www.ginopc.it" target="_blank">Maurizio Aru</a>
+		</div>
+	  </footer>
+	</div>
+</body>
+</html>
