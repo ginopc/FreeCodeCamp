@@ -1,0 +1,26 @@
+{
+  "name": "expressworks",
+  "version": "1.0.0",
+  "description": "expresswork challenge by FreeCodeCamp",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "node test.js",
+    
+  },
+  "author": "Maurizio Aru",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/ginopc/freecodecamp.git"
+  },
+  "keywords": [
+    "express",
+    "nodejs",
+    "freecodecamp"
+  ],
+  "bugs": {
+    "url": "https://github.com/ginopc/freecodecamp/issues"
+  },
+  "homepage": "https://github.com/ginopc/freecodecamp#readme"
+}
