@@ -1,5 +1,5 @@
 /* ===================================
- *   Express HelloWorld
+ *   ExpressWorks: Step 2 - Static
  *
  *   Author  : Maurizio Aru
  *   Created : 2017.03.27
@@ -8,7 +8,6 @@
  * SINTAX: node my_app.js PORT DOC_ROOT_PATH
  *
  */
-
 
 var express = require('express');
 var path = require('path');
