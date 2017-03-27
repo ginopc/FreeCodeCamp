@@ -21,9 +21,7 @@ if (process.argv < 4){
 }
 
 var PORT = Number(process.argv[2]);
-var DOC_ROOT_PATH = path.dirname(process.arv[3]);
+var DOC_ROOT_PATH = process.argv[3];
 
-app.get('/home', function(req, res) {
-  res.end('Hello World!')
-})
+app.use(express.static(DOC_ROOT_PATH||path.join(__dirname, 'public')));
 app.listen(PORT);
