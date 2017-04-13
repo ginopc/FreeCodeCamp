@@ -10,9 +10,9 @@
  */
 
 var express = require('express');
-var app = express();
 var path = require('path');
 var bodyparser = require('body-parser');
+var PORT = Number(process.argv[2]);
 
 // check comandline params
 if (process.argv < 4){
@@ -20,15 +20,14 @@ if (process.argv < 4){
     return;
 }
 
-var PORT = Number(process.argv[2]);
+var app = express();
 
 // middleware import
 app.use(bodyparser.urlencoded({ extended: false }));
 
 // define routes
-app.use(express.static( path.join(__dirname, 'public')) );
 app.post('/form', function(req,res){
-  res = req.body.str.split('').reverse().join('');
+  res.end(req.body.str.split('').reverse().join(''));
 });
 
 app.listen(PORT);
