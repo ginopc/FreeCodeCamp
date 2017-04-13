@@ -8,7 +8,7 @@
 
 
 var express = require('express')
-var app = express();
+var app = express()
 
 if (process.argv < 3){
     console.error('Missing boot parameters!');
