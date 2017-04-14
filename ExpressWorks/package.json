@@ -11,7 +11,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/ginopc/freecodecamp.git"
+    "url": "git+ssh://ginopc@github.com/ginopc/freecodecamp.git"
   },
   "keywords": [
     "express",
