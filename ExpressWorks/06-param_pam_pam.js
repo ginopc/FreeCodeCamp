@@ -1,11 +1,11 @@
 /* ========================================
- *   ExpressWorks: Step 04 - Good old form
+ *   ExpressWorks: Step 06 - Param Pam Pam
  *
  *   Author  : Maurizio Aru
- *   Created : 2017.03.27
+ *   Created : 2017.004.13
  * ========================================
  *
- * SINTAX: node my_app.js PORT DOC_ROOT_PATH
+ * SINTAX: node my_app.js PORT
  *
  */
 

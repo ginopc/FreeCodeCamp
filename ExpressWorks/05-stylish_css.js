@@ -1,11 +1,11 @@
 /* ========================================
- *   ExpressWorks: Step 04 - Good old form
+ *   ExpressWorks: Step 05 - Stylish
  *
  *   Author  : Maurizio Aru
- *   Created : 2017.03.27
+ *   Created : 2017.04.13
  * ========================================
  *
- * SINTAX: node my_app.js PORT DOC_ROOT_PATH
+ * SINTAX: node my_app.js PORT
  *
  */
 
