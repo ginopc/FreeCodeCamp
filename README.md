@@ -5,5 +5,7 @@ The https://FreeCodeCamp.com open source codebase and curriculum. Learn to code 
  - TributePage
  - PersonalPortfolio
  - QuoteMachine
+ - ExpressWorks
+ - PomodoroClock
 
 All projects are based on relative challenges on FreeCodeCamp
