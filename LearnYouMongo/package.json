@@ -1,0 +1,24 @@
+{
+  "name": "learnyoumongo",
+  "version": "1.0.0",
+  "description": "A new tutorial branch on FreeCodeCamp",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "author": "Maurizio Aru",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ginopc/freecodecamp.git"
+  },
+  "keywords": [
+    "freecodecamp",
+    "mongodb",
+    "learning"
+  ],
+  "bugs": {
+    "url": "https://github.com/ginopc/freecodecamp/issues"
+  },
+  "homepage": "https://github.com/ginopc/freecodecamp#readme"
+}
