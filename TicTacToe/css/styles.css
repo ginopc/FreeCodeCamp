@@ -1,0 +1,25 @@
+#gameboard {
+   width: 364px;
+   height: 364px;
+   margin: 40px auto 0px auto;
+}
+
+.row {
+   clear: both;
+   overflow: hidden;
+   width: 364px;
+}
+
+.square {
+   float: left;
+   width: 119px;
+   height: 119px;
+}
+
+.bottom {
+   border-bottom: 1px solid black;
+}
+
+.right {
+   border-right: 1px solid black;
+}
