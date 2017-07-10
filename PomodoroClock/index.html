@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+	<title>Free Code Camp - PomodoroClock</title>
+	<meta name="author" content="Maurizio Aru">
+	<meta name="description" content="Pomodoro Clock FCC challenge">
+	<meta charset="UTF-8">
+		
+	<!-- styles -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+	<link rel="stylesheet" href="css/styles.css" />
+
+	<!-- scripts -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js"></script>
+	<script src="js/scripts.js"></script>
+</head>
+<body>
+   <div class="container">
+     <header>
+       <h1>Pomodoro Clock</h1>
+       <h2>Free Code Camp advanced projects</h2>
+     </header>
+     
+     <section "clock">
+       
+       <!-- break time controller area -->
+       <section id="breakCtrl" class="timerCtrl">
+         <h3>Break Time</h3>
+         <button class="btn btn-primary" id="sub5_break">-</button>
+         <label id="breakTime">1</label>
+         <button class="btn btn-primary" id ="add5_break">+</button>
+       </section><!--/breakCtrl-->
+       
+       <!-- interval time controller area -->
+       <section id="sessionCtrl" class="timerCtrl">
+         <h3>Session Time</h3>
+         <button class="btn btn-primary" id="sub5_session">-</button>
+         <label id="sessionTime">2</label>
+         <button class="btn btn-primary" id ="add5_session">+</button>
+       </section><!--/sessionCtrl-->
+       
+       <section id="sessionTimer">
+         <button id="startCount" class="btn btn-success btn-lg">Start</button>
+         <button id="resetAll" class="btn btn-default btn-lg">Reset</button>
+         <section>
+           <h3 id="counterType">Counter OFF</h3>
+           <h2><label id="counter">
+               25
+             </label></h2>
+         </section>
+       </section><!--/sessionTimer-->
+       
+     </section ><!--/clock-->
+     
+     <footer class="text-center">
+       <small>
+         &copy 2016 by <a href="http://www.ginopc.it" target="_blank">M. Aru</a><br/>
+         <a href="https://it.linkedin.com/in/maurizioaru" target="_blank"><i class="fa fa-linkedin"> LinekedIn</i></a>
+         <a href="https://www.github.com/ginopc" target="_blank"><i class="fa fa-github"> GitHub</i></a>
+       </small>
+     </footer>
+   </div><!--./container -->
+
+</body>
+</html>
