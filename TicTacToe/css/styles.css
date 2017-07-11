@@ -1,25 +1,34 @@
+body {
+   background-color: #aaa;
+}
+
 #gameboard {
-   width: 364px;
-   height: 364px;
+   width: 360px;
+   height: 360px;
    margin: 40px auto 0px auto;
 }
 
 .row {
    clear: both;
    overflow: hidden;
-   width: 364px;
+   width: 360px;
+   height: 120px;
 }
 
 .square {
+   background-color: #fff;
    float: left;
-   width: 119px;
-   height: 119px;
+   width: 120px;
+   height: 120px;
+   text-align: center;
+   font-size: 50px;
+   padding: 30px;
 }
 
-.bottom {
+.bottomLined {
    border-bottom: 1px solid black;
 }
 
-.right {
+.rightLined {
    border-right: 1px solid black;
 }
