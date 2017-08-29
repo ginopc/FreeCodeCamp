@@ -5,6 +5,7 @@
 	<meta name="author" content="Maurizio Aru">
 	<meta name="description" content="Another FCC challenge project">
 	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		
 	<!-- styles -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
@@ -24,32 +25,42 @@
 		<p>Another FCC challenge project</p>
 	  </header>
 	  
-	  <section id="gameboard" class="gameboard">
+	  <section id="gamescreen" class="game">
+	  
+			<section id="symbolSelect" class="screen">
+				<h2>Select your preferred symbol</h2>
+				<span id="x-symbol" class="symbol fa fa-times"></span>
+				<span id="y-symbol" class="symbol fa fa-circle-o"></span>
+			</section><!--/symbolSelect-->
+	  
+			<section id="gameboard" class="gameboard">
 
-	  	<section id="gameScores">
-	  		<label>Player1 Score: <span id="player1_score">0</span></label>
-	  		<label>Player2 Score: <span id="player2_score">0</span></label>
-	  	</section><!--/gamescores-->
-	  	
-	  	<section id="gamepad">
-	  	<div class="row">
-	  		<div id="sq1" class="square bottomLined rightLined"></div>
-	  		<div id="sq2" class="square bottomLined rightLined"></div>
-	  		<div id="sq3" class="square bottomLined"></div>
-	  	</div>
-	  	<div class="row">
-	  		<div id="sq4" class="square bottomLined rightLined"></div>
-	  		<div id="sq5" class="square bottomLined rightLined"></div>
-	  		<div id="sq6" class="square bottomLined"></div>
-	  	</div>
-	  	<div class="row">
-	  		<div id="sq7" class="square rightLined"></div>
-	  		<div id="sq8" class="square rightLined"></div>
-	  		<div id="sq9" class="square"></div>
-	  	</div>
-	  	</section><!--/gamepad-->
-	     
-	  </section><!--/gameboard-->
+				<section id="gameScores">
+					<label id="scorefield_1">Player: <span id="player1_score">0</span></label>
+					<label id="scorefield_2">Computer: <span id="player2_score">0</span></label>
+				</section><!--/gamescores-->
+
+				<section id="gamepad">
+					<div class="row">
+						<div id="sq1" class="square bottomLined rightLined"></div>
+						<div id="sq2" class="square bottomLined rightLined"></div>
+						<div id="sq3" class="square bottomLined"></div>
+					</div>
+					<div class="row">
+						<div id="sq4" class="square bottomLined rightLined"></div>
+						<div id="sq5" class="square bottomLined rightLined"></div>
+						<div id="sq6" class="square bottomLined"></div>
+					</div>
+					<div class="row">
+						<div id="sq7" class="square rightLined"></div>
+						<div id="sq8" class="square rightLined"></div>
+						<div id="sq9" class="square"></div>
+					</div>
+				</section><!--/gamepad-->
+			  
+			</section><!--/gameboard-->
+
+		</section><!--/gamescreen-->
 	  
 	  <footer>Designed and developed by Maurizio Aru<br/>&copy; 2017 by the author.</footer>
 	</div>

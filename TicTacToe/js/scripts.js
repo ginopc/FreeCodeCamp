@@ -1,82 +1,210 @@
-$(document).ready(function(){
+/**
+ *  Tic Tac Toe styles
+ *
+ *  Author  : Maurizio Aru
+ *  Created : 2017-07-13
+ */
 
-   var player = 1;
-   var player1Score = 0;
-   var player2Score = 0;
-   
-   $('.square').on('click', function(){
-      
-      var currentSquare = $(this);
-      
-      if ( currentSquare.hasClass('fa-times') || currentSquare.hasClass('fa-circle-o') ) {
-         // nothing to do, symbol there is
-      }
-      else {
-         if (player === 1) {
-            currentSquare.addClass('fa fa-times');
-            if (checkIfPlayerWon('fa-times')){
-               alert('Congrats, Player' + player + ' has won!');
-               player1Score++;
-               boardReset();
-            }
-            else {
-               console.log('Player '+ player +' has\'nt won. Game continue');
-               player = 2;
-            }
-         }
-         else {
-            currentSquare.addClass('fa fa-circle-o');
-            if (checkIfPlayerWon('fa-circle-o')){
-               alert('Congrats, Player' + player + ' has won!');
-               player2Score++;
-               boardReset();
-            }
-            else {
-               console.log('Player '+ player +' has\'nt won. Game continue');
-               player = 1;
-            }
-         }
-      }
-   });
-   
-   function checkIfPlayerWon(symbol) {
-      
-      // horizonal line
-      if ( $('#sq1').hasClass(symbol) && $('#sq2').hasClass(symbol) && $('#sq3').hasClass(symbol) ) {
-         return true;
-      }
-      else if ( $('#sq4').hasClass(symbol) && $('#sq5').hasClass(symbol) && $('#sq6').hasClass(symbol) ) {
-         return true;
-      }
-      else if ( $('#sq7').hasClass(symbol) && $('#sq8').hasClass(symbol) && $('#sq9').hasClass(symbol) ) {
-         return true;
-      }
-      // vertical line
-      else if ( $('#sq1').hasClass(symbol) && $('#sq4').hasClass(symbol) && $('#sq7').hasClass(symbol) ) {
-         return true;
-      }
-      else if ( $('#sq2').hasClass(symbol) && $('#sq5').hasClass(symbol) && $('#sq8').hasClass(symbol) ) {
-         return true;
-      }
-      else if ( $('#sq3').hasClass(symbol) && $('#sq6').hasClass(symbol) && $('#sq9').hasClass(symbol) ) {
-         return true;
-      }
-      // oblique line
-      else if ( $('#sq1').hasClass(symbol) && $('#sq5').hasClass(symbol) && $('#sq9').hasClass(symbol) ) {
-         return true;
-      }
-      else if ( $('#sq3').hasClass(symbol) && $('#sq5').hasClass(symbol) && $('#sq7').hasClass(symbol) ) {
-         return true;
-      }
-      else {
-         return false;
-      }
-   }
-   
-   function boardReset(){
-      $('.square').removeClass('fa fa-times');
-      $('.square').removeClass('fa fa-circle-o');
-      $('#player1_score').text(player1Score);
-      $('#player2_score').text(player2Score);
-   }
+var player1, player2, gameStatus;
+
+$(document).ready(function(){
+	
+	init();
+	showSelectSymbol();
 });
+
+/* Init application */
+function init() {
+	console.log('Init application...');
+	player1 = new Player('x', false);
+	player2 = new Player('0', true);
+	gameStatus = new State(player1, player2);
+	console.log('App initialized!');
+}
+
+function showSelectSymbol(){
+	var symbol = "x";
+	console.log("Show Select Symbol Screen");
+	$("#symbolSelect").show();
+	$("#gameboard").hide();
+	$(".symbol").on('click', function(){
+		
+		symbol = ($(this).hasClass("fa-times") ? 'x' : '0');
+		console.log("Selected " + symbol + " symbol");
+		player1.setSign('x');
+		player2.setSign('0');
+		playGame();
+	});
+}
+
+/* show game board screen and start the game */
+function playGame(){
+	console.log("Start Game");
+	$("#symbolSelect").hide();
+	$("#gameboard").show();
+	$(".square").on('click', OnSquareClick);
+	console.log("Current Game Status: " + gameStatus.toString());
+}
+
+function OnSquareClick(){
+   console.log("Square Clicked");
+	
+	var currentSquare = $(this);
+	var currentTurn = gameStatus.getCurrentTurn();
+	
+	if ( currentSquare.hasClass('fa-times') || currentSquare.hasClass('fa-circle-o') ) {
+		return;
+	}
+	else {
+		if (currentTurn === 'x') {
+			currentSquare.addClass('fa fa-times');
+			if (checkIfPlayerWon('fa-times')){
+				alert('Congrats, Player ' + currentTurn + ' has won!');
+				gameStatus.playerWin();
+				boardReset();
+			}
+			else {
+				console.log('Player '+ currentTurn +' has\'nt won. Game continue');
+				console.log("player1("+ player1.getSign() +"): "+ player1.getScore() + "");
+				gameStatus.changeTurn();
+			}
+		}
+		else {
+			currentSquare.addClass('fa fa-circle-o');
+			if (checkIfPlayerWon('fa-circle-o')){
+				alert('Congrats, Player ' + currentTurn + ' has won!');
+				gameStatus.playerWin();
+				boardReset();
+			}
+			else {
+				console.log('Player '+ currentTurn +' has\'nt won. Game continue');
+				console.log("player1("+ player1.getSign() +"): "+ player1.getScore() + "");
+				gameStatus.changeTurn();
+			}
+		}
+	}
+}
+   
+function checkIfPlayerWon(symbol) {
+	
+	// horizonal line
+	if ( $('#sq1').hasClass(symbol) && $('#sq2').hasClass(symbol) && $('#sq3').hasClass(symbol) ) {
+		return true;
+	}
+	else if ( $('#sq4').hasClass(symbol) && $('#sq5').hasClass(symbol) && $('#sq6').hasClass(symbol) ) {
+		return true;
+	}
+	else if ( $('#sq7').hasClass(symbol) && $('#sq8').hasClass(symbol) && $('#sq9').hasClass(symbol) ) {
+		return true;
+	}
+	// vertical line
+	else if ( $('#sq1').hasClass(symbol) && $('#sq4').hasClass(symbol) && $('#sq7').hasClass(symbol) ) {
+		return true;
+	}
+	else if ( $('#sq2').hasClass(symbol) && $('#sq5').hasClass(symbol) && $('#sq8').hasClass(symbol) ) {
+		return true;
+	}
+	else if ( $('#sq3').hasClass(symbol) && $('#sq6').hasClass(symbol) && $('#sq9').hasClass(symbol) ) {
+		return true;
+	}
+	// oblique line
+	else if ( $('#sq1').hasClass(symbol) && $('#sq5').hasClass(symbol) && $('#sq9').hasClass(symbol) ) {
+		return true;
+	}
+	else if ( $('#sq3').hasClass(symbol) && $('#sq5').hasClass(symbol) && $('#sq7').hasClass(symbol) ) {
+		return true;
+	}
+	else {
+		return false;
+	}
+}
+
+function boardReset(){
+	console.log("Reset Game Board");
+	$('.square').removeClass('fa fa-times');
+	$('.square').removeClass('fa fa-circle-o');
+	console.log(gameStatus.toString());
+	$('#player1_score').text(player1.getScore());
+	$('#player2_score').text(player2.getScore());
+}
+
+
+
+/* classe che rappresenta il giocatore */ 
+function Player(sign, isComputer){
+	
+	this.isComputer = isComputer;
+	this.score = 0;
+	this.sign = sign;
+	
+	this.setSign = function(newSign){
+		this.sign = newSign;
+	}
+	
+	this.getSign = function(){
+		return this.sign;
+	}
+	
+	this.win = function(){
+		this.score = parseInt(this.score) + 1;
+	}
+	
+	this.getScore = function(){
+		return this.score;
+	}
+	
+	this.toString = function(){
+		var result = "{ " + 
+			"sign: '" + this.sign + "', " + 
+			"score: " + this.score + ", " +
+			"isComputer: " + this.isComputer +
+			"}";
+		console.log("Person: " + result);
+		return result;
+	}
+}
+
+/* classe che rappresenta lo stato attuale del gioco */
+function State(Player1, Player2){
+	
+	this.player1 = Player1;
+	this.player2 = Player2;
+	this.gameInPlay = false;
+	this.turn = player1.getSign;
+	
+	/* check if game is playing */
+	function isPlaying() {
+		return this.gameInPlay;
+	}
+	
+	this.getCurrentTurn = function(){
+		return this.turn;
+	}
+	
+	this.changeTurn = function(){
+		this.turn = (this.turn == 'x' ? '0' : 'x');
+	}
+	
+	this.playerWin = function(){
+		if (player1.getSign() === this.turn){
+			player1.win()
+		}
+		else if (player2.getSign() === this.turn) {
+			player2.win();
+		}
+		else {
+			console.log("ERROR: who is winner?");
+		}
+	}
+	
+	this.toString = function(){
+		var result;
+		
+		result = "{ "+
+			"player1: " + player1.toString() + ", " + 
+			"player2: " + player2.toString() +
+			"}";
+		console.log("Game Status: " + result);
+		return result;
+	}
+}

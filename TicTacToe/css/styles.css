@@ -1,13 +1,58 @@
+/**
+ *  Tic Tac Toe styles
+ *
+ *  Author  : Maurizio Aru
+ *  Created : 2017-07-13
+ */
+ 
+ /* main tags */
 body {
-   background-color: #aaa;
+   background-color: #333;
+	color: #fff;
+	margin: 0;
+	padding: 0;
+}
+header {
+	color: #ccc;
+	background-color: #555;
+	text-align: center;
+	padding-top: 2px;
+	padding-bottom: 2px;
+}
+footer {
+		color: #ccc;
+		background-color: #555;
+		text-align: center;
+		margin-top: 40px;
+		padding: 10px 0px 10px 0px;
 }
 
+/* classes and ids */
+.container {
+	margin: auto;
+	padding: 0;
+}
+#screen {
+	width: 400px;
+	height: 500px;
+	margin: auto;
+	top: 0;
+	left: 0;
+}
+#symbolSelect {
+	text-align: center;
+	display: none;
+}
+.symbol {
+		cursor: pointer;
+		font-size: 3em;
+}
 #gameboard {
    width: 360px;
    height: 360px;
    margin: 40px auto 0px auto;
+	display: none;
 }
-
 .row {
    clear: both;
    overflow: hidden;
@@ -28,7 +73,12 @@ body {
 .bottomLined {
    border-bottom: 1px solid black;
 }
-
 .rightLined {
    border-right: 1px solid black;
+}
+.fa-times {
+	color: #f00;
+}
+.fa-circle-o {
+	color: #218402;
 }
