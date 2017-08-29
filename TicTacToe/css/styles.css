@@ -82,3 +82,12 @@ footer {
 .fa-circle-o {
 	color: #218402;
 }
+#messagebox {
+	display: none;
+	text-align: center;
+	margin: auto;
+	font-size: 3em;
+	border: 1px solid #999;
+	border-radius: 10px;
+	background-color: #666;
+}

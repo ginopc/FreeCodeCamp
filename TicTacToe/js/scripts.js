@@ -31,8 +31,12 @@ function showSelectSymbol(){
 		
 		symbol = ($(this).hasClass("fa-times") ? 'x' : '0');
 		console.log("Selected " + symbol + " symbol");
-		player1.setSign('x');
-		player2.setSign('0');
+		player1.setSign(symbol);
+		player2.setSign( ( symbol === 'x' ? '0' : 'x') );
+		$('#player1_symbol').removeClass("fa fa-times fa-circle-o");
+		$('#player1_symbol').addClass( (player1.getSign() === 'x' ? "fa fa-times" : "fa fa-circle-o") );
+		$('#player2_symbol').removeClass("fa fa-times fa-circle-o");
+		$('#player2_symbol').addClass( (player2.getSign() === 'x' ? "fa fa-times" : "fa fa-circle-o") );
 		playGame();
 	});
 }
@@ -43,7 +47,18 @@ function playGame(){
 	$("#symbolSelect").hide();
 	$("#gameboard").show();
 	$(".square").on('click', OnSquareClick);
-	console.log("Current Game Status: " + gameStatus.toString());
+}
+
+function showMessage(message){
+	console.log("Show Message '" + message + "'");
+	$("#gameboard").show();
+	$("#gamepad").hide();
+	$("#messagebox").show();
+	$("#message").text(message);
+	$("#messageOK").on('click', function(){
+		$("#messagebox").hide();
+		$("#gamepad").show();
+	});
 }
 
 function OnSquareClick(){
@@ -59,7 +74,8 @@ function OnSquareClick(){
 		if (currentTurn === 'x') {
 			currentSquare.addClass('fa fa-times');
 			if (checkIfPlayerWon('fa-times')){
-				alert('Congrats, Player ' + currentTurn + ' has won!');
+				showMessage("Congrats, Player " + currentTurn + " has won!");
+				// showMessage("Congrats, Player <i class=\"" + (currentTurn === 'x' ? "fa fa-times" : "fa fa-circle-o") + "\"></i> has won!");
 				gameStatus.playerWin();
 				boardReset();
 			}
@@ -72,7 +88,8 @@ function OnSquareClick(){
 		else {
 			currentSquare.addClass('fa fa-circle-o');
 			if (checkIfPlayerWon('fa-circle-o')){
-				alert('Congrats, Player ' + currentTurn + ' has won!');
+				showMessage("Congrats, Player " + currentTurn + " has won!");
+				// showMessage("Congrats, Player <i class=\"" + (currentTurn === 'x' ? "fa fa-times" : "fa fa-circle-o") + "\"></i> has won!");
 				gameStatus.playerWin();
 				boardReset();
 			}

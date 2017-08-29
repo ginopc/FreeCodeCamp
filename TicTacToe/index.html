@@ -36,8 +36,8 @@
 			<section id="gameboard" class="gameboard">
 
 				<section id="gameScores">
-					<label id="scorefield_1">Player: <span id="player1_score">0</span></label>
-					<label id="scorefield_2">Computer: <span id="player2_score">0</span></label>
+					<label id="scorefield_1">Player (<span id="player1_symbol" class="fa fa-times"></span>): <span id="player1_score">0</span></label>
+					<label id="scorefield_2">Computer (<span id="player2_symbol" class="fa fa-circle-o"></span>): <span id="player2_score">0</span></label>
 				</section><!--/gamescores-->
 
 				<section id="gamepad">
@@ -57,10 +57,20 @@
 						<div id="sq9" class="square"></div>
 					</div>
 				</section><!--/gamepad-->
+				
+				<section id="messagebox">
+					<div id="message">There isn't nothing to say about this game now</div>
+					<button class="btn btn-default" id="messageOK">OK</button>
+				</section>
 			  
 			</section><!--/gameboard-->
 
 		</section><!--/gamescreen-->
+		
+			<!-- section>
+				<div>Congrats! Player <i class="fa fa-times"></i> has won!</div>
+				<button class="btn btn-default">OK</button>
+			</section -->
 	  
 	  <footer>Designed and developed by Maurizio Aru<br/>&copy; 2017 by the author.</footer>
 	</div>
