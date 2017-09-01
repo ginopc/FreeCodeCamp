@@ -5,59 +5,56 @@
  *  Created : 2017-07-13
  */
  
+@import url('https://fonts.googleapis.com/css?family=Architects+Daughter');
+@import url('https://fonts.googleapis.com/css?family=Nova+Mono');
+ 
  /* main tags */
 body {
    background-color: #333;
-	color: #fff;
-	margin: 0;
-	padding: 0;
+	color: #000;
+  font-family: 'Nova Mono';
 }
 header {
-	color: #ccc;
-	background-color: #555;
-	text-align: center;
-	padding-top: 2px;
-	padding-bottom: 2px;
+  font-family: 'Architects Daughter', cursive;
 }
+header h1 { font-size: 1.9em }
+header p {  font-size: 1.2em }
 footer {
-		color: #ccc;
-		background-color: #555;
-		text-align: center;
-		margin-top: 40px;
-		padding: 10px 0px 10px 0px;
+  font-family: 'Architects Daughter', cursive;
+  font-size: 1em;
+  text-align: center;
+  padding-top: 20px;
 }
 
 /* classes and ids */
 .container {
-	margin: auto;
-	padding: 0;
+  margin: auto;
+  clear: both;
+  width: 400px;
+  background-color: #d2ffc7;
+  border: 1px solid #d2ffc7;
+  border-radius: 10px;
 }
 #screen {
-	width: 400px;
-	height: 500px;
 	margin: auto;
-	top: 0;
-	left: 0;
 }
 #symbolSelect {
-	text-align: center;
+	width: 400px;
 	display: none;
+	text-align: center;
 }
-.symbol {
+.symbols {
 		cursor: pointer;
 		font-size: 3em;
 }
 #gameboard {
-   width: 360px;
-   height: 360px;
-   margin: 40px auto 0px auto;
+   width: 100%;
+	padding: 0;
 	display: none;
 }
 .row {
-   clear: both;
-   overflow: hidden;
-   width: 360px;
-   height: 120px;
+	margin-left: 0;
+	margin-right: 0;
 }
 
 .square {
@@ -87,7 +84,7 @@ footer {
 	text-align: center;
 	margin: auto;
 	font-size: 3em;
-	border: 1px solid #999;
+	border: 1px solid #ff0;
 	border-radius: 10px;
-	background-color: #666;
+	background-color: #ff0;
 }
