@@ -180,7 +180,7 @@ function IsGameOver(){
 
 	// check diagonal upper left - bottom right
 	if ( (grid[0][0] !== ' ') &&
-				(grid[0][i] === grid[1][1]) &&
+				(grid[0][0] === grid[1][1]) &&
 				(grid[0][0] === grid[2][2]) ){
 					return grid[0][0];
 	}
