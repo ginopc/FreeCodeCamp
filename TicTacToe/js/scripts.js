@@ -6,6 +6,11 @@
  */
 
 var gameStatus;
+var grid = [
+	[ ' ', ' ', ' '],
+	[ ' ', ' ', ' '],
+	[ ' ', ' ', ' ']
+];
 
 $(document).ready(function(){
 	
@@ -54,12 +59,17 @@ function playGame(){
 	updateBoard()
 }
 
-function updateBoard(){
-  console.log("Update board");
-  $('#player1_score').text(gameStatus.getPlayer1().getScore());
-  $('#player2_score').text(gameStatus.getPlayer2().getScore());
-  $('#player_turn').removeClass('fa fa-times fa-circle-o');
-  $('#player_turn').addClass( (gameStatus.getCurrentTurn() === 'x' ? 'fa fa-times' : 'fa fa-circle-o') );
+function moveAI(){
+	for (var i=0; i<3; i++) {
+		for (var j=0; j<3; j++) {
+			if (grid[i][j] === ' ') {
+				return {
+					i: i,
+					j: j
+				}
+			}
+		}
+	}
 }
 
 function showMessage(message){
@@ -76,89 +86,155 @@ function showMessage(message){
 
 /* Square click event listener */
 function OnSquareClick(){
+	const PLAYER_TOKEN = gameStatus.getPlayer1().getSign();
+	const COMPUTER_TOKEN = gameStatus.getPlayer2().getSign();
+	
    console.log("Square Clicked");
 	
 	var currentSquare = $(this);
 	var currentTurn = gameStatus.getCurrentTurn();
+	var i = currentSquare.data('i');
+	var j = currentSquare.data('j');
 	
 	console.log('count: ' + gameStatus.turnCount);
-	if ( currentSquare.hasClass('fa-times') || currentSquare.hasClass('fa-circle-o') ) {
+	if ( grid[i][j] !== ' ') {
 		// nothing to do
 		console.log('Square full. Nothing to do');
 		return;
 	}
 	else {
-		if (currentTurn === 'x') {
-			currentSquare.addClass('fa fa-times');
-			if (checkIfPlayerWon('fa-times')){
-				showMessage("Congrats, Player " + currentTurn + " has won!");
-				gameStatus.playerWin();
-				resetBoard();
-			}
-			else {
-				console.log('Player '+ currentTurn +' has\'nt won. Game continue');
-				console.log("player1("+ gameStatus.getPlayer1().getSign() +"): "+ gameStatus.getPlayer1().getScore() + "");
-				gameStatus.changeTurn();
-			}
+		grid[i][j] = currentTurn;
+		updateBoard();
+		console.log('Grid: ' + grid);
+		
+		const status = IsGameOver();
+		if ( (status === PLAYER_TOKEN) || (status === COMPUTER_TOKEN) ){
+			console.log('Win player ' + status);
+			showMessage("Congrats, Player " + status + " has won!");
+			gameStatus.playerWin();
+			resetBoard();
+		}
+		else if (status == null){
+			console.log('Tie game!');
+			showMessage("Tie Game!");
+			resetBoard();
 		}
 		else {
-			currentSquare.addClass('fa fa-circle-o');
-			if (checkIfPlayerWon('fa-circle-o')){
-				showMessage("Congrats, Player " + currentTurn + " has won!");
-				// showMessage("Congrats, Player <i class=\"" + (currentTurn === 'x' ? "fa fa-times" : "fa fa-circle-o") + "\"></i> has won!");
-				gameStatus.playerWin();
-				resetBoard();
-			}
-			else {
-				console.log('Player '+ currentTurn +' has\'nt won. Game continue');
-				console.log("player2("+ gameStatus.getPlayer2().getSign() +"): "+ gameStatus.getPlayer2().getScore() + "");
-				gameStatus.changeTurn();
-			}
-		}
-		if (gameStatus.getCount() >= 9){ // = 9 turns
-			showMessage("Play ended. Restart New Play");
-			gameStatus.restartGame();
-			resetBoard();
+			console.log('Game is not over. Play another turn');
+			gameStatus.changeTurn();
+			computerTurn();
 		}
 	}
 }
-   
-function checkIfPlayerWon(symbol) {
+
+// play computer turn
+function computerTurn(){
+	console.log('Computer turn');
+	const PLAYER_TOKEN = gameStatus.getPlayer1().getSign();
+	const COMPUTER_TOKEN = gameStatus.getPlayer2().getSign();
+	const cell = moveAI();
 	
-	// horizonal line
-	if ( $('#sq1').hasClass(symbol) && $('#sq2').hasClass(symbol) && $('#sq3').hasClass(symbol) ) {
-		return true;
+	grid[cell.i][cell.j] = COMPUTER_TOKEN;
+	updateBoard();
+	console.log('Grid: ' + grid);
+	
+	const status = IsGameOver();
+	if ( (status === PLAYER_TOKEN) || (status === COMPUTER_TOKEN) ){
+		console.log('Win player ' + status);
+		showMessage("Congrats, Player " + status + " has won!");
+		gameStatus.playerWin();
+		resetBoard();
 	}
-	else if ( $('#sq4').hasClass(symbol) && $('#sq5').hasClass(symbol) && $('#sq6').hasClass(symbol) ) {
-		return true;
-	}
-	else if ( $('#sq7').hasClass(symbol) && $('#sq8').hasClass(symbol) && $('#sq9').hasClass(symbol) ) {
-		return true;
-	}
-	// vertical line
-	else if ( $('#sq1').hasClass(symbol) && $('#sq4').hasClass(symbol) && $('#sq7').hasClass(symbol) ) {
-		return true;
-	}
-	else if ( $('#sq2').hasClass(symbol) && $('#sq5').hasClass(symbol) && $('#sq8').hasClass(symbol) ) {
-		return true;
-	}
-	else if ( $('#sq3').hasClass(symbol) && $('#sq6').hasClass(symbol) && $('#sq9').hasClass(symbol) ) {
-		return true;
-	}
-	// oblique line
-	else if ( $('#sq1').hasClass(symbol) && $('#sq5').hasClass(symbol) && $('#sq9').hasClass(symbol) ) {
-		return true;
-	}
-	else if ( $('#sq3').hasClass(symbol) && $('#sq5').hasClass(symbol) && $('#sq7').hasClass(symbol) ) {
-		return true;
+	else if (status == null){
+		console.log('Tie game!');
+		showMessage("Tie Game!");
+		resetBoard();
 	}
 	else {
-		return false;
+		console.log('Game is not over. Play another turn');
+		gameStatus.changeTurn();
 	}
+}
+
+function IsGameOver(){
+	var currentTurn = gameStatus.getPlayer1().getSign();
+
+	console.log('IsGameOver?');
+	// check horizontal
+	for (var i=0; i<3; i++){
+		if ( (grid[i][0] !== ' ') &&
+				(grid[i][0] === grid[i][1]) &&
+				(grid[i][0] === grid[i][2]) ){
+					return grid[i][0];
+		}
+	}
+	
+	// check vertical
+	for (var i=0; i<3; i++){
+		if ( (grid[0][i] !== ' ') &&
+					(grid[0][i] === grid[1][i]) &&
+					(grid[0][i] === grid[2][i]) ){
+						return grid[0][i];
+		}
+	}
+
+	// check diagonal upper left - bottom right
+	if ( (grid[0][0] !== ' ') &&
+				(grid[0][i] === grid[1][1]) &&
+				(grid[0][0] === grid[2][2]) ){
+					return grid[0][0];
+	}
+
+	// check diagonal bottom left - upper right
+	if ( (grid[2][0] !== ' ') &&
+				(grid[2][0] === grid[1][1]) &&
+				(grid[2][0] === grid[0][2]) ){
+					return grid[2][0];
+	}
+	
+	// check if there is empty cells
+	for (var i=0; i<3; i++){
+		for (var j=0; j<3; j++){
+			if (grid[i][j] === ' '){
+				return false;
+			}
+		}
+	}
+	
+	return null; // tie game
+}
+
+function updateBoard(){
+	
+	const PLAYER_TOKEN = gameStatus.getPlayer1().getSign();
+	const COMPUTER_TOKEN = gameStatus.getPlayer2().getSign();
+	
+	console.log("Update board");
+	$('#player1_score').text(gameStatus.getPlayer1().getScore());
+	$('#player2_score').text(gameStatus.getPlayer2().getScore());
+	$('#player_turn').removeClass('fa fa-times fa-circle-o');
+	$('#player_turn').addClass( (gameStatus.getCurrentTurn() === 'x' ? 'fa fa-times' : 'fa fa-circle-o') );
+  
+  for (var i=0; i<3; i++){
+	  for (var j=0; j<3; j++){
+			if (grid[i][j] !== ' '){
+				console.log('grid['+ i +']['+ j + ']: ' + grid[i][j]);
+				$('.square[data-i=' + i + '][data-j=' + j + ']').addClass( (grid[i][j] === 'x' ? 'fa fa-times' : 'fa fa-circle-o') );
+			}
+	  }
+  }
 }
 
 function resetBoard(){
 	console.log("Reset Game Board");
+	
+	// reset grid
+	for (var i=0; i<3; i++){
+		for (var j=0; j<3; j++){
+			grid[i][j] = ' ';
+		}
+	}
+	
 	$('.square').removeClass('fa fa-times');
 	$('.square').removeClass('fa fa-circle-o');
 	console.log(gameStatus.toString());
