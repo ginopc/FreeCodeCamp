@@ -6,11 +6,6 @@
  **************************/
 
 var gameStatus;
-var grid = [
-	[ ' ', ' ', ' '],
-	[ ' ', ' ', ' '],
-	[ ' ', ' ', ' ']
-];
 var gameBoard;
 
 $(document).ready(function(){
@@ -122,35 +117,13 @@ function OnSquareClick(){
 	}
 }
 
-/* minmax procedure */
-function minmax(newGrid, depth, player){
-}
-
-/* Player Turn
-	@return: true if player played his game, false otherwise
- */
-function PlayerTurn(sign, i, j){
-	
-	console.log('count: ' + gameStatus.turnCount);
-	
-	if ( gameBoard.getValue(i, j) !== ' ') {
-		// nothing to do
-		console.log('Square full. Nothing to do');
-		return false; // nothing to do
-	}
-	else {
-		gameBoard.setValue(sign, i, j);
-		gameBoard.draw();
-		return true;
-	}
-}
-
 /* Computer Turn */
 function computerTurn(){
 	console.log('Computer turn');
 	const PLAYER_TOKEN = gameStatus.getPlayer1().getSign();
 	const COMPUTER_TOKEN = gameStatus.getPlayer2().getSign();
-	const cell = moveAI();
+	//const cell = moveAI();
+	const cell = (new MinMax(gameBoard.grid, PLAYER_TOKEN, COMPUTER_TOKEN)).calculate(COMPUTER_TOKEN);
 	
 	gameBoard.setValue(COMPUTER_TOKEN, cell.i, cell.j);
 	gameBoard.draw();
@@ -376,5 +349,114 @@ function Status(Ply1, Ply2){
 
       console.log("Game Status: " + JSON.stringify(result));
       return JSON.stringify(result);
+	}
+}
+
+function MinMax(grid, PLAYER_TOKEN, OPPONENT_TOKEN){
+	this.Grid = grid;
+	
+	this.calculate = function(player){
+		var MyBoard = new Board(this.grid);
+		const gameState = MyBoard.isGameOver();
+		
+		if (gameState === false){
+			const values = [];
+				
+			for (var i=0; i<3; i++){
+				for (var j=0; j<3; j++){
+					if (this.Grid[i][j] !== ' ') continue;
+					const gridCopy = copyArray();;
+					gridCopy[i][j] = player;
+					const value = new MinMax(gridCopy, depth + 1, (player === PLAYER_TOKEN ? COMPUTER_TOKEN : PLAYER_TOKEN));
+					values.push(
+					{
+						cost: value,
+						cell: {
+							i: i,
+							j: j
+						}
+					});
+				}
+			}
+			
+			if (player === COMPUTER_TOKEN){
+				const cmax = maxBy(values);
+				if (depth === 0) {
+					return cmax.cell
+				}
+				else {
+					return cmax.cost;
+				}
+			}
+			else {
+				const pmin = minBy(values);
+				if (depth === 0) {
+					return pmin.cell
+				}
+				else {
+					return pmin.cost;
+				}
+			}	
+		} else if (gameState === null){
+			return 0; // tie game
+		} else if (gameState === PLAYER_TOKEN){
+			return depth - 10;
+		} else if (gameState === COMPUTER_TOKEN){
+			return 10 - depth;
+		}
+	}
+	
+	this.minBy = function(){
+	  var result = {
+		  cost: 100, 
+		  cell: {
+			  i:-1, 
+			  j:-1
+			}
+		}; 
+	  
+	  //debugger
+	  for (var i=0; i < this.Grid.length; i++){
+		 if (this.Grid[i].cost <= result.cost){
+			result = this.Grid[i];
+		 }
+	  }
+	  
+	  return result;
+  }
+	
+	this.maxBy = function(){
+	  var result = {
+		  cost: -100,
+		  cell: {
+			  i: -1, 
+			  j:-1
+		  }
+		}; 
+	  
+	  //debugger
+	  for (var i=0; i < this.Grid.length; i++){
+		 if (this.Grid[i].cost >= result.cost){
+			result = this.Grid[i];
+		 }
+	  }
+	  
+	  return result;
+  }
+	
+	this.copyArray = function(){
+		var result = [];
+		
+		for (var i=0; i < this.Grid.length; i++){
+			var row = [];
+			
+			for (var j=0; j < this.Grid[i].length; j++){
+				row.push( this.Grid[i][j] );
+			}
+			
+			result.push(row);
+		}
+		
+		return result;
 	}
 }
