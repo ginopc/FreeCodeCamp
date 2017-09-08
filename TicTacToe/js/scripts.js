@@ -1,9 +1,9 @@
-/**
+/***************************
  *  Tic Tac Toe styles
  *
  *  Author  : Maurizio Aru
  *  Created : 2017-07-13
- */
+ **************************/
 
 var gameStatus;
 var grid = [
@@ -11,6 +11,7 @@ var grid = [
 	[ ' ', ' ', ' '],
 	[ ' ', ' ', ' ']
 ];
+var gameBoard;
 
 $(document).ready(function(){
 	
@@ -22,6 +23,7 @@ $(document).ready(function(){
 function init() {
 	console.log('Init application...');
 	gameStatus = new Status(new Player('x', false), new Player('0', true));
+	gameBoard = new Board([ [' ', ' ', ' '],[' ', ' ', ' '],[' ', ' ', ' '] ] );
 	console.log('App initialized!');
 }
 
@@ -56,13 +58,13 @@ function playGame(){
 	$("#symbolSelect").hide();
 	$("#gameboard").show();
 	$(".square").on('click', OnSquareClick);
-	updateBoard()
+	gameBoard.draw()
 }
 
 function moveAI(){
 	for (var i=0; i<3; i++) {
 		for (var j=0; j<3; j++) {
-			if (grid[i][j] === ' ') {
+			if (gameBoard.getValue(i,j) === ' ') {
 				return {
 					i: i,
 					j: j
@@ -89,7 +91,7 @@ function OnSquareClick(){
 	const PLAYER_TOKEN = gameStatus.getPlayer1().getSign();
 	const COMPUTER_TOKEN = gameStatus.getPlayer2().getSign();
 	
-   console.log("Square Clicked");
+   console.log("DEBUG: Square Clicked");
 	
 	var currentSquare = $(this);
 	var currentTurn = gameStatus.getCurrentTurn();
@@ -97,27 +99,20 @@ function OnSquareClick(){
 	var j = currentSquare.data('j');
 	
 	console.log('count: ' + gameStatus.turnCount);
-	if ( grid[i][j] !== ' ') {
-		// nothing to do
-		console.log('Square full. Nothing to do');
-		return;
-	}
-	else {
-		grid[i][j] = currentTurn;
-		updateBoard();
-		console.log('Grid: ' + grid);
-		
-		const status = IsGameOver();
+	if ( gameBoard.setValue(currentTurn, i, j) ){
+		gameBoard.draw();
+
+		const status = gameBoard.isGameOver();
 		if ( (status === PLAYER_TOKEN) || (status === COMPUTER_TOKEN) ){
 			console.log('Win player ' + status);
-			showMessage("Congrats, Player " + status + " has won!");
+			showMessage("Congrats, Player <i class=\"" + (status === 'x' ? 'fa fa-times' : 'fa fa-circle-o') + "\"></i> has won!");
 			gameStatus.playerWin();
-			resetBoard();
+			gameBoard.reset();
 		}
 		else if (status == null){
 			console.log('Tie game!');
 			showMessage("Tie Game!");
-			resetBoard();
+			gameBoard.reset();
 		}
 		else {
 			console.log('Game is not over. Play another turn');
@@ -127,28 +122,50 @@ function OnSquareClick(){
 	}
 }
 
-// play computer turn
+/* minmax procedure */
+function minmax(newGrid, depth, player){
+}
+
+/* Player Turn
+	@return: true if player played his game, false otherwise
+ */
+function PlayerTurn(sign, i, j){
+	
+	console.log('count: ' + gameStatus.turnCount);
+	
+	if ( gameBoard.getValue(i, j) !== ' ') {
+		// nothing to do
+		console.log('Square full. Nothing to do');
+		return false; // nothing to do
+	}
+	else {
+		gameBoard.setValue(sign, i, j);
+		gameBoard.draw();
+		return true;
+	}
+}
+
+/* Computer Turn */
 function computerTurn(){
 	console.log('Computer turn');
 	const PLAYER_TOKEN = gameStatus.getPlayer1().getSign();
 	const COMPUTER_TOKEN = gameStatus.getPlayer2().getSign();
 	const cell = moveAI();
 	
-	grid[cell.i][cell.j] = COMPUTER_TOKEN;
-	updateBoard();
-	console.log('Grid: ' + grid);
+	gameBoard.setValue(COMPUTER_TOKEN, cell.i, cell.j);
+	gameBoard.draw();
 	
-	const status = IsGameOver();
+	const status = gameBoard.isGameOver();
 	if ( (status === PLAYER_TOKEN) || (status === COMPUTER_TOKEN) ){
 		console.log('Win player ' + status);
-		showMessage("Congrats, Player " + status + " has won!");
+		showMessage("Congrats, Player <i class=\"" + (status === 'x' ? 'fa fa-times' : 'fa fa-circle-o') + "\"></i> has won!");
 		gameStatus.playerWin();
-		resetBoard();
+		gameBoard.reset();
 	}
 	else if (status == null){
 		console.log('Tie game!');
 		showMessage("Tie Game!");
-		resetBoard();
+		gameBoard.reset();
 	}
 	else {
 		console.log('Game is not over. Play another turn');
@@ -156,93 +173,102 @@ function computerTurn(){
 	}
 }
 
-function IsGameOver(){
-	var currentTurn = gameStatus.getPlayer1().getSign();
 
-	console.log('IsGameOver?');
-	// check horizontal
-	for (var i=0; i<3; i++){
-		if ( (grid[i][0] !== ' ') &&
-				(grid[i][0] === grid[i][1]) &&
-				(grid[i][0] === grid[i][2]) ){
-					return grid[i][0];
-		}
+/* Game Board class */
+function Board(grid){
+	
+	this.grid = grid;
+	
+	this.getValue = function(i, j){
+		return this.grid[i][j];
 	}
 	
-	// check vertical
-	for (var i=0; i<3; i++){
-		if ( (grid[0][i] !== ' ') &&
-					(grid[0][i] === grid[1][i]) &&
-					(grid[0][i] === grid[2][i]) ){
-						return grid[0][i];
-		}
-	}
-
-	// check diagonal upper left - bottom right
-	if ( (grid[0][0] !== ' ') &&
-				(grid[0][0] === grid[1][1]) &&
-				(grid[0][0] === grid[2][2]) ){
-					return grid[0][0];
-	}
-
-	// check diagonal bottom left - upper right
-	if ( (grid[2][0] !== ' ') &&
-				(grid[2][0] === grid[1][1]) &&
-				(grid[2][0] === grid[0][2]) ){
-					return grid[2][0];
+	this.setValue = function(value, i, j){
+		if (this.grid[i][j] !== ' ') return false;
+		
+		this.grid[i][j] = value;
+		return true;
 	}
 	
-	// check if there is empty cells
-	for (var i=0; i<3; i++){
-		for (var j=0; j<3; j++){
-			if (grid[i][j] === ' '){
-				return false;
+	/* reset grid for another play */
+	this.reset = function(){
+		console.log("DEBUG: Board.reset");
+		
+		// reset grid
+		for (var i=0; i<3; i++){
+			for (var j=0; j<3; j++){
+				grid[i][j] = ' ';
 			}
 		}
+		
+		$('.square').removeClass('fa fa-times');
+		$('.square').removeClass('fa fa-circle-o');
+		$('#player1_score').text(gameStatus.getPlayer1().getScore());
+		$('#player2_score').text(gameStatus.getPlayer2().getScore());
 	}
 	
-	return null; // tie game
-}
+	/* redraw board view */
+	this.draw = function(){
+		console.log("DEBUG: Board.draw");
 
-function updateBoard(){
-	
-	const PLAYER_TOKEN = gameStatus.getPlayer1().getSign();
-	const COMPUTER_TOKEN = gameStatus.getPlayer2().getSign();
-	
-	console.log("Update board");
-	$('#player1_score').text(gameStatus.getPlayer1().getScore());
-	$('#player2_score').text(gameStatus.getPlayer2().getScore());
-	$('#player_turn').removeClass('fa fa-times fa-circle-o');
-	$('#player_turn').addClass( (gameStatus.getCurrentTurn() === 'x' ? 'fa fa-times' : 'fa fa-circle-o') );
-  
-  for (var i=0; i<3; i++){
-	  for (var j=0; j<3; j++){
-			if (grid[i][j] !== ' '){
-				console.log('grid['+ i +']['+ j + ']: ' + grid[i][j]);
-				$('.square[data-i=' + i + '][data-j=' + j + ']').addClass( (grid[i][j] === 'x' ? 'fa fa-times' : 'fa fa-circle-o') );
-			}
-	  }
-  }
-}
+		$('#player1_score').text(gameStatus.getPlayer1().getScore());
+		$('#player2_score').text(gameStatus.getPlayer2().getScore());
+		$('#player_turn').removeClass('fa fa-times fa-circle-o');
+		$('#player_turn').addClass( (gameStatus.getCurrentTurn() === 'x' ? 'fa fa-times' : 'fa fa-circle-o') );
 
-function resetBoard(){
-	console.log("Reset Game Board");
-	
-	// reset grid
-	for (var i=0; i<3; i++){
-		for (var j=0; j<3; j++){
-			grid[i][j] = ' ';
+		for (var i=0; i<3; i++){
+		  for (var j=0; j<3; j++){
+				if (grid[i][j] !== ' '){
+					console.log('grid['+ i +']['+ j + ']: ' + grid[i][j]);
+					$('.square[data-i=' + i + '][data-j=' + j + ']').addClass( (grid[i][j] === 'x' ? 'fa fa-times' : 'fa fa-circle-o') );
+				}
+		  }
 		}
 	}
 	
-	$('.square').removeClass('fa fa-times');
-	$('.square').removeClass('fa fa-circle-o');
-	console.log(gameStatus.toString());
-	$('#player1_score').text(gameStatus.getPlayer1().getScore());
-	$('#player2_score').text(gameStatus.getPlayer2().getScore());
+	/* 
+	 * check if game is over 
+	 * @return: sign of winner, null for tie or false for another turn
+	 */
+	this.isGameOver = function(){
+		
+		// check rows
+		for (var i=0; i<3; i++){
+			if ( (this.grid[i][0] !== ' ') && (this.grid[i][0] === this.grid[i][1]) && (this.grid[i][0] === this.grid[i][2])){
+				return this.grid[i][0];
+			}
+		}
+		
+		// check columns
+		for (var i=0; i<3; i++){
+			if ( (this.grid[0][i] !== ' ') && (this.grid[0][i] === this.grid[1][i]) && (this.grid[0][i] === this.grid[2][i])){
+				return this.grid[0][i];
+			}
+		}
+		
+		// check diagonal upper left - bottom-righ
+		if ( (this.grid[0][0] !== ' ') && (this.grid[0][0] === this.grid[1][1]) && (this.grid[0][0] === this.grid[2][2]) ){
+			return this.grid[0][0];
+		}
+		
+		// check diagonal bottom left - upper righ
+		if ( (this.grid[2][0] !== ' ') && (this.grid[2][0] === this.grid[1][1]) && (this.grid[2][0] === this.grid[0][2]) ){
+			return this.grid[2][0];
+		}
+
+		// check if there game is not over
+		for (var i=0; i<3; i++){
+			for (var j=0; j<3; j++){
+				if (this.grid[i][j] === ' '){
+					return false;
+				}
+			}
+		}
+		
+		// return null if is a tie
+		return null;
+	}
 }
-
-
 
 /* Player class */
 function Player(sign, isComputer){
