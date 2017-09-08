@@ -23,29 +23,33 @@ footer {
   font-family: 'Architects Daughter', cursive;
   font-size: 1em;
   text-align: center;
-  padding-top: 20px;
+  padding-top: 5px;
 }
 
 /* classes and ids */
 .container {
   margin: auto;
   clear: both;
-  width: 400px;
+  width: 305px;
   background-color: #d2ffc7;
   border: 1px solid #d2ffc7;
   border-radius: 10px;
+  text-align: center;
 }
 #screen {
 	margin: auto;
 }
 #symbolSelect {
-	width: 400px;
+	width: 100%;
 	display: none;
 	text-align: center;
 }
 .symbols {
 		cursor: pointer;
 		font-size: 3em;
+}
+#gamescores {
+	padding-bottom: 5px;
 }
 #gameboard {
    width: 100%;
@@ -61,18 +65,18 @@ footer {
 .square {
    background-color: #fff;
    float: left;
-   width: 120px;
-   height: 120px;
+   width: 80px;
+   height: 80px;
    text-align: center;
    font-size: 50px;
-   padding: 30px;
+	margin: 5px;
+   padding: 15px;
+	border-right: 1px solid #ddd;
+	border-bottom: 1px solid #ddd;
+	border-radius: 5px;
 }
-
-.bottomLined {
-   border-bottom: 1px solid black;
-}
-.rightLined {
-   border-right: 1px solid black;
+.square:hover {
+	background-color: #eee;
 }
 .fa-times {
 	color: #f00;
