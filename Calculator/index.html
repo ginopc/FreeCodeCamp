@@ -12,6 +12,54 @@
 	<script src="js/ap.js"></script>
 </head>
 <body>
-	<h1>Fcc Calculator<h1>
+	<div class="container">
+	  <header>
+		 <div class="text-center">
+			<h1>FCC Calculator</h1>
+		 </div>
+	  </header>
+
+	  <section class="calculator">
+		 <!-- display -->
+		 <div id="displayArea" class="text-center">
+			<div id="result">0</div>
+			<div id="history"></div>
+		 </div>
+
+		 <!-- buttons -->
+		 <div id="buttonArea" class="text-center">
+			<a class="btn btn-danger"  role="button" id="deleteAll">AC</a>
+			<a class="btn btn-danger"  role="button" id="backOne">CE</a>
+			<a class="btn btn-primary" role="button" id="/">/</a>
+			<a class="btn btn-primary" role="button" id="*">*</a>
+			<br/>
+			<a class="btn btn-primary" role="button" id="7">7</a>
+			<a class="btn btn-primary" role="button" id="8">8</a>
+			<a class="btn btn-primary" role="button" id="9">9</a>
+			<a class="btn btn-primary" role="button" id="-">-</a>
+			<br/>
+			<a class="btn btn-primary" role="button" id="4">4</a>
+			<a class="btn btn-primary" role="button" id="5">5</a>
+			<a class="btn btn-primary" role="button" id="6">6</a>
+			<a class="btn btn-primary" role="button" id="+">+</a>
+			<br/>
+			<a class="btn btn-primary" role="button" id="1">1</a>
+			<a class="btn btn-primary" role="button" id="2">2</a>
+			<a class="btn btn-primary" role="button" id="3">3</a>
+			<a class="btn btn-primary" role="button" id=".">.</a>
+			<br/>
+			<a class="btn btn-primary btn-lg" role="button" id="0">0</a>
+			<a class="btn btn-primary btn-lg" role="button" id="total">=</a>
+		 </div>
+	  </section><!--./calculator-->
+	  
+	  <footer class="text-center">
+		 <h6>Designed by <a href="http://www.ginopc.it">Maurizio Aru</a> - Copyright &copy; <span id="copyYear">2016</span></h6>
+		 <h6>
+			<a href="https://www.linkedin.com/in/maurizioaru"><i class="fa fa-linkedin"> LinkedIn</i></a>
+			<a href="https://github.com/ginopc"><i class="fa fa-github"> GitHub</i></a>
+		 </h6>
+	  </footer>
+	</div><!--.container-->
 </body>
 </html>
