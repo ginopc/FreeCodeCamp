@@ -6,38 +6,39 @@
 html, body {
   background-color: rgb(255, 238, 204);
 }
-h1 {
-  color: rgb(153, 0, 0);
-  font-family: 'Glegoo', serif;
-}
 h2 {
   color: rgb(153, 0, 0);
   font-family: 'Glegoo', serif;
+}
+.calculator {
+	background-color: #555;
+	width: 250px;
+	margin: auto;
+	padding-top: 2px;
+	border-radius: 2em;
+}
+#calcHead {
+	color: #fff;
+	text-align: center;
+	font-family: 'Glegoo', serif;
 }
 #displayArea {
   background-color: white;
   width: 250px;
   heigth: 75px;
   border: 1px 1px 1px 1px;
-  border-top-left-radius: 2em;
-  border-top-right-radius: 2em;
   padding-top: 20px;
   margin-top: 20px;
   margin-left: auto;
   margin-right: auto;
 }
 #buttonArea {
-  background-color: gray;
-  width: 250px;
   color: white;
   padding-left: 20px;
   padding-top: 10px;
   padding-right: 30px;
   padding-bottom: 20px;
-  border-bottom-left-radius: 2em;
-  border-bottom-right-radius: 2em;
-  margin-left: auto;
-  margin-right: auto;
+  margin: auto;
 }
 #result {
   font-size: 2em;
