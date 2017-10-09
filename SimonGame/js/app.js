@@ -49,9 +49,52 @@ var simon = {
         var nextColor = this.colors[Math.floor(Math.random() * this.colors.length)];
         console.log("the random color is:", nextColor);
         this.sequence.push(nextColor);
-        console.log("the sequence:", this.sequence);
+        this.playSequence();
         // this.step = 0; //reset step count to start new check
     },
+    playSequence: function(){        
+        console.log("Play the sequence:", this.sequence);
+        var i = 0;
+        simon.tHnd = setInterval(function(){
+            var color = simon.sequence[i];
+            console.log('Lighting '+ color + '...');
+            
+            // light button
+            simon.enlight(color);
+
+            i++;
+            if (i === simon.sequence.length) clearInterval(simon.tHnd);
+        }, 700);
+
+    },
+    enlight: function(color){
+        
+        //debugger
+        switch(color){
+            case RED:
+                $('#RED').addClass('button-red-filled');
+                break;
+
+            case BLUE:
+                $('#BLUE').addClass('button-blue-filled');
+                break;
+
+            case YELLOW:
+                $('#YELLOW').addClass('button-yellow-filled');
+                break;
+
+            case GREEN:
+                $('#GREEN').addClass('button-green-filled');
+                break;
+        }
+
+        setTimeout(function(){
+                $('#RED').removeClass('button-red-filled');
+                $('#BLUE').removeClass('button-blue-filled');
+                $('#YELLOW').removeClass('button-yellow-filled');
+                $('#GREEN').removeClass('button-green-filled');
+        }, 500);
+    }
 };
 
 $(document).ready(function(){
