@@ -91,6 +91,7 @@ var simon = {
 		 console.log('Resetting game...');
 		this.step = 0;
 		this.sequence = [];
+		$('.steps').text(this.sequence.length);
 	 }
 };
 
