@@ -121,13 +121,6 @@ $(document).ready(function(){
 		console.log('Game reset');
 		simon.reset();
 	 });
-	 
-	 /*
-	 // Manage keys pressed
-	 $(document).keypress(function(key){
-		 console.log(key);
-	 });
-	 */
 });
 
 
