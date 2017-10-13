@@ -3,7 +3,7 @@
 <head>
     <title>Simon Game</title>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <meta name="author" content="Maurizio Aru">
+    <meta name="author" content="Maurizio Aru">.
     <meta name="description" content="Simone Game in HTML5">
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -15,25 +15,38 @@
 <body>
     <div class="container">
         <header>
-            <h2>Simon Game</h2>
+            <h3>Simon Game</h3>
         </header>
 
         <section class="gameboard">
             <div class="row">
-                <button class="btn btn-danger simon-button" id="RED">R</button>
-                <button class="btn btn-primary simon-button" id="BLUE">B</button>
+                <button class="button-RED simon-button" id="RED">R</button>
+                <button class="button-BLUE simon-button" id="BLUE">B</button>
             </div>
+				
+				<div>
+					<label class="steps">00</label>
+				</div>
+				
             <div class="row">
-                <button class="btn btn-warning simon-button" id="YELLOW">Y</button>
-                <button class="btn btn-success simon-button" id="GREEN">G</button>
+                <button class="button-YELLOW simon-button" id="YELLOW">Y</button>
+                <button class="button-GREEN simon-button" id="GREEN">G</button>
             </div>
         </section>
 
-        <button class="btn btn-info btn-block" id="startBtn">Start</button>
+		<section class="controls">
+			<button class="btn btn-info" id="startBtn">START</button>
+			<button class="btn btn-warning" id="resetBtn">RESET</button>
+		</section><!--/controllers-->
 
         <footer>
-            <small>Copyright © 2017 by Maurizio Aru</small>
+            <small>© Maurizio Aru</small>
         </footer>
+		  
+		<audio src="https://s3.amazonaws.com/freecodecamp/simonSound1.mp3" id="sound-R"></audio>
+		<audio src="https://s3.amazonaws.com/freecodecamp/simonSound2.mp3" id="sound-B"></audio>
+		<audio src="https://s3.amazonaws.com/freecodecamp/simonSound3.mp3" id="sound-Y"></audio>
+		<audio src="https://s3.amazonaws.com/freecodecamp/simonSound4.mp3" id="sound-G"></audio>
     </div><!--/container-->
 </body>
 </html>
