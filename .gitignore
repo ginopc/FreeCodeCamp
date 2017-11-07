@@ -1,3 +1,4 @@
 templates/*
 images/*
 .*.[Ss][Ww][Pp]
+node_modules
