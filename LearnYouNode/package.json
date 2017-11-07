@@ -1,0 +1,20 @@
+{
+  "name": "learnyounode",
+  "version": "0.0.1",
+  "description": "Learn You Node workshop",
+  "main": "server.js",
+  "dependencies": {
+    "bl": "^1.2.1",
+    "strftime": "^0.10.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "node test.js"
+  },
+  "keywords": [
+    "nodejs",
+    "javascript"
+  ],
+  "author": "Maurizio Aru",
+  "license": "MIT"
+}
