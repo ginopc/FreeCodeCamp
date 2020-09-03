@@ -1,20 +1,29 @@
 {
   "name": "learnyounode",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Learn You Node workshop",
   "main": "server.js",
   "dependencies": {
-    "bl": "^1.2.1",
+    "bl": "^2.2.1",
     "strftime": "^0.10.0"
   },
   "devDependencies": {},
   "scripts": {
-    "test": "node test.js"
+    "main": "node index.js",
+    "test": "node index.js"
   },
   "keywords": [
     "nodejs",
     "javascript"
   ],
   "author": "Maurizio Aru",
-  "license": "MIT"
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ginopc/FreeCodeCamp.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ginopc/FreeCodeCamp/issues"
+  },
+  "homepage": "https://github.com/ginopc/FreeCodeCamp#readme"
 }
